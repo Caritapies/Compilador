@@ -1,0 +1,1 @@
+ORGANIZATION NAME{%UCO%}DESCRIPTION{"Universidad"} GROUP PUBLICATION TITLE{"Reunión General"}CONTENT{"hoy habrá reunión a las 4"}DATEP{"07/08/2023"}STATE{"Activa"} COMENT CONTENT{"Allá estaré"}DATEC{"14/08/2023"}
