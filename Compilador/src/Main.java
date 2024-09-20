@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
@@ -22,22 +25,39 @@ public class Main {
 <COMENT> ::= COMENT {CONTENT{"str"}DATEC{"str"}}
 */
 
-        public static void main(String[] args) {
-            String input = """
-            ORGANIZATION NAME{%UCO%}DESCRIPTION{"Universidad"}
-            GROUP PUBLICATION TITLE{"Reunión General"}CONTENT{"hoy habrá reunión a las 4"}DATEP{"07/08/2023"}STATE{"Activa"}
-            COMENT CONTENT{"Allá estaré"}DATEC{"14/08/2023"}
-            
-            """;
-            Lexer lexer = new Lexer(input);
-            List<Token> tokens = lexer.tokenize();
+    public static void main(String[] args) throws IOException {
 
-            for (Token token : tokens) {
-                System.out.println(token);
+        String input = readFile();
+
+        Lexer lexer = new Lexer(input);
+        List<Token> tokens = lexer.tokenize();
+        System.out.println(tokens);
+
+
+        Parser parser = new Parser(tokens);
+
+        try {
+            parser.parse();
+            System.out.println("La entrada es sintácticamente correcta.");
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    private static String readFile() throws IOException {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("C:/Users/Usuario/Desktop/Uni/8vo semestre/Compiladores/Compilador/Compilador/src/input.txt"))) {
+            String line;
+            StringBuilder stringBuilder = new StringBuilder();
+            String ls = System.getProperty("line.separator");
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+                stringBuilder.append(ls);
             }
 
-
+            return stringBuilder.toString();
         }
+    }
+
 }
 
 

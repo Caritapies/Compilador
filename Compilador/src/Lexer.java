@@ -31,14 +31,14 @@ public class Lexer {
                 continue;
             }
             if (current == '"') {
-                tokens.add(new Token(TokenType.DESCRIPTION, extractString()));
+                tokens.add(new Token(TokenType.STRING, extractString()));
                 continue;
             }
 
             String word = extractWord();
             switch (word) {
                 case "ORGANIZATION" -> tokens.add(new Token(TokenType.ORGANIZATION, word));
-                case "NAME" -> tokens.add(new Token(TokenType.IDENTIFIER, word));
+                case "NAME" -> tokens.add(new Token(TokenType.NAME, word));
                 case "DESCRIPTION" -> tokens.add(new Token(TokenType.DESCRIPTION, word));
                 case "GROUP" -> tokens.add(new Token(TokenType.GROUP, word));
                 case "PUBLICATION" -> tokens.add(new Token(TokenType.PUBLICATION, word));
