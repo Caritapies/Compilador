@@ -94,7 +94,7 @@ public class Parser {
         if (currentTokenIndex < tokens.size() && tokens.get(currentTokenIndex).getType() == expected) {
             currentTokenIndex++;
         } else {
-            throw new RuntimeException("Error de sintaxis: se esperaba " + expected+" y se encontró "+tokens.get(currentTokenIndex));
+            throw new RuntimeException("Error de sintaxis: se esperaba " + expected + " y se encontró "+tokens.get(currentTokenIndex).getLexeme()+" en la fila "+tokens.get(currentTokenIndex).getLine()+" y en la columna "+tokens.get(currentTokenIndex).getColumn());
         }
     }
     private void matchString(){

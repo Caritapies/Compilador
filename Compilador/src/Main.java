@@ -31,8 +31,6 @@ public class Main {
 
         Lexer lexer = new Lexer(input);
         List<Token> tokens = lexer.tokenize();
-        System.out.println(tokens);
-
 
         Parser parser = new Parser(tokens);
 
